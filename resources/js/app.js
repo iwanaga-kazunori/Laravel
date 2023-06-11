@@ -8,11 +8,13 @@ require('./bootstrap');
 
 // window.Vue = require('vue');
 import Vue from 'vue';
-
+import Slick from 'vue-slick';
 import axios from 'axios';
 
 import VModal from 'vue-js-modal';
 Vue.use(VModal);
+import Spinner from 'vue-simple-spinner';
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -27,8 +29,8 @@ Vue.use(VModal);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 // Vue.component('matches-component', require('./components/MatchesComponent.vue').default);
 // Vue.component('hooper-component', require('./components/HooperComponent.vue').default);
-Vue.component('modal-component', require('./components/ModalComponent.vue').default);
-
+// Vue.component('modal-component', require('./components/ModalComponent.vue').default);
+Vue.component('User', require('./components/User.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -37,56 +39,10 @@ Vue.component('modal-component', require('./components/ModalComponent.vue').defa
 
 const app = new Vue({
     el: '#app',
-    data() {
-        return {
-            // matches: null
-        }
+    data: {
+      checkflg : false,
     },
-    mounted () {
-        // this.getMatches()  
-    },
-    methods: {
-        getMatches () {
-            axios.get('/api/matches')
-            .then (function (response){
-                console.log(response)
-                this.matches = response.body
-            })
-            .catch (function (error){
-                console.log(error)
-            })
-        },
-        
-    },
-    el: '#app',
-  methods: {
-    show : function() {
-      this.$modal.show('hello-world');
-    },
-    hide : function () {
-      this.$modal.hide('hello-world');
-    },
-  },
-    
-    
-//     el: '#app2',
-// 　　data: {
-// 　　　　modalVisible: false, // モーダル
-// 　　　　modalBgVisible: false //モーダル背景色（薄黒）
-// 　　},
-// 　　methods: {
-// 　　　　showModal: function(){
-// 　　　　　　this.modalVisible = true
-// 　　　　　　this.modalBgVisible = true
-//     },
-//     closeModal: function(){
-//       this.modalVisible = false
-//       this.modalBgVisible = false
-//     },
-//     cancelEvent: function(){ 
-//      event.stopPropagation() 
-//     }
-//   },
-  
-  
+    components: {
+        Spinner,
+      },
 });

@@ -1,7 +1,15 @@
 {
     "/js/app.js": "/js/app.js",
+    "/js/feed.js": "/js/feed.js",
+    "/js/test.js": "/js/test.js",
     "/css/app.css": "/css/app.css",
-    "/css/front.css": "/css/front.css",
     "/css/profile.css": "/css/profile.css",
-    "/css/admin.css": "/css/admin.css"
+    "/css/admin.css": "/css/admin.css",
+    "/css/base.css": "/css/base.css",
+    "/css/modal.css": "/css/modal.css",
+    "/css/sns.css": "/css/sns.css",
+    "/css/mypage.css": "/css/mypage.css",
+    "/css/matches.css": "/css/matches.css",
+    "/css/feed.css": "/css/feed.css",
+    "/css/front.css": "/css/front.css"
 }

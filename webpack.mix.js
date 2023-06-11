@@ -12,9 +12,17 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js').vue()
+    .js('resources/js/feed.js', 'public/js').vue()
+    .js('resources/js/test.js', 'public/js').vue()
     .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/sass/base.scss', 'public/css')
     .sass('resources/sass/admin.scss', 'public/css')
     .sass('resources/sass/profile.scss', 'public/css')
-    .sass('resources/sass/front.scss', 'public/css');
+    .sass('resources/sass/front.scss', 'public/css')
+    .sass('resources/sass/feed.scss', 'public/css')
+    .sass('resources/sass/matches.scss', 'public/css')
+    .sass('resources/sass/mypage.scss', 'public/css')
+    .sass('resources/sass/sns.scss', 'public/css')
+    .sass('resources/sass/modal.scss', 'public/css');
     
     

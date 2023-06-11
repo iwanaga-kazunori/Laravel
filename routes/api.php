@@ -16,5 +16,15 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
 Route::get('matches', 'TestapiController@api');
+
+Route::get('feed', 'FeedController@apiFeed')->middleware('auth:api');
+Route::put('feed', 'FeedController@apiStore');
+Route::post('fileupload', 'MypageController@uploadImage');
+// Route::post('fileupload', function(){dd(request()->all());});
+Route::get('comments/{comment_id}', 'FeedController@apiGetComments')->middleware('auth:api');
+Route::get('/teams', 'MypageController@apiTeams');
+Route::get('/users', 'UserController@index');
+Route::post('/favoriteTeamsCreate', 'MypageController@favoriteTeamsCreate');
+Route::get('/favoriteTeamsRead', 'MypageController@favoriteTeamsRead');
+Route::post('/favoriteTeamsUpdate', 'MypageController@favoriteTeamsUpdate');

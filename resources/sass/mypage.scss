@@ -1,0 +1,288 @@
+.mypage {
+    h2 {
+        text-align:center;
+        font-size:1.5em;
+        margin: 20px 0px 0px 0px;
+    }
+    .error {
+        text-align: center;
+        color: red;
+        margin: 10px 0px 10px 0px;
+        background-color: pink;
+    }
+    .profile {
+        align-items: center;
+        overflow:hidden;
+        padding:10px;
+        width:100%;
+        margin:30px auto 0px auto;
+        background-color: rgba(0,0,0,0.4);
+        border-radius:3px;
+        box-shadow: -3px 3px 5px rgba(221, 0, 0, 0.7), 3px -3px 5px rgba(255, 207, 0, 0.7);
+        .icon {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            .icon_image {
+                width: 200px;
+                margin: 0 auto;
+                img {
+                width: 100%;
+                border-radius: 50%;
+                }
+            }
+            .button {
+                width:50%;
+                background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(221,0,0,1) 50%, rgba(255,207,0,1) 100%);
+                padding: 0px;
+                color:#fff;
+                font-weight:500;
+                border:none;
+                margin-top: 10px;
+            }
+            .icon_modal {
+                color: #333;
+                text-align: center;
+                .vm--modal {
+                    overflow-y: hidden !important;
+                }
+                .modal-header {
+                    justify-content: center;
+                    h3 {
+                        margin: 0px;
+                        font-size: 1rem;
+                    }
+                }
+                .modal-body {
+                    padding: 10px 0px 0px 0px;
+                    text-align: right;
+                    .preview {
+                        text-align: center;
+                        img {
+                            width:150px;
+                        }    
+                    }
+                    .button {
+                        width:60px;
+                        height:60px;
+                        border-radius: 50%;
+                        background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(221,0,0,1) 50%, rgba(255,207,0,1) 100%);
+                        padding: 0px;
+                        color:#fff;
+                        font-weight:500;
+                        border:none;
+                        margin: 20px 20px 20px 0px;
+                    }
+                }
+                .close_button {
+                    width:100%;
+                    padding:10px;
+                    border:0px;
+                    background:#7d7d7d;
+                    color:#fff;
+                    font-weight: 500;
+                }
+            }
+        }
+        .name {
+            text-align: center;
+            margin-left: 30px;
+            padding: 0px;
+            table {
+                margin-top: 30px;
+            }
+            th {
+                text-align-last: justify;
+                text-align: left;
+                font-weight: normal;
+            }
+            td {
+                text-align: left;
+            }
+            .favorite_teams {
+                margin-top:20px;
+                padding: 0px;
+                text-align: left;
+                h3 {
+                    font-size: 1.0em;
+                    text-align: left;
+                }
+                ul {
+                    padding-left: 1.5em;
+                    text-align: left;
+                }
+                .button {
+                    width:40%;
+                    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(221,0,0,1) 50%, rgba(255,207,0,1) 100%);
+                    padding: 0px;
+                    color:#fff;
+                    font-weight:500;
+                    border:none;
+                    margin-top: 10px;
+                }
+                .select-favorite {
+                    color: #333;
+                    .vm--modal {
+                        overflow-y: hidden !important;
+                    }
+                    .modal-header {
+                        justify-content: center;
+                        h3 {
+                            margin: 0px;
+                        }
+                    }
+                    .modal-body {
+                        padding: 0px;
+                        text-align: right;
+                        form {
+                            margin: 10px 10px 10px 30px;
+                            .team_wrap {
+                                display: flex;
+                                flex-wrap: wrap;
+                                .team_list {
+                                    display: flex;
+                                    width: 33%;
+                                }
+                            }
+                        }
+                        label {
+                            margin-top: 5px;
+                            margin-left: 10px;
+                            margin-bottom: 5px;
+                        }
+                        .button {
+                            width:60px;
+                            height:60px;
+                            border-radius: 50%;
+                            background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(221,0,0,1) 50%, rgba(255,207,0,1) 100%);
+                            padding: 0px;
+                            color:#fff;
+                            font-weight:500;
+                            border:none;
+                            margin: 10px 20px 20px 0px;
+                        }
+                        .close_button {
+                            width:100%;
+                            padding:10px;
+                            border:0px;
+                            background:#7d7d7d;
+                            color:#fff;
+                            font-weight: 500;
+                        }
+                    }
+                }
+                .edit-favorite {
+                    color: #333;
+                    .vm--modal {
+                        overflow-y: hidden !important;
+                    }
+                    .modal-header {
+                        justify-content: center;
+                        h3 {
+                            margin: 0px;
+                        }
+                    }
+                    .modal-body {
+                        padding: 0px;
+                        text-align: right;
+                        form {
+                            margin: 10px 10px 10px 30px;
+                            .team_wrap {
+                                display: flex;
+                                flex-wrap: wrap;
+                                .team_list {
+                                    display: flex;
+                                    width: 33%;
+                                }
+                            }
+                        }
+                        label {
+                            margin-top: 5px;
+                            margin-left: 10px;
+                            margin-bottom: 5px;
+                        }
+                        .button {
+                            width:60px;
+                            height:60px;
+                            border-radius: 50%;
+                            background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(221,0,0,1) 50%, rgba(255,207,0,1) 100%);
+                            padding: 0px;
+                            color:#fff;
+                            font-weight:500;
+                            border:none;
+                            margin: 10px 20px 20px 0px;
+                        }
+                        .close_button {
+                            width:100%;
+                            padding:10px;
+                            border:0px;
+                            background:#7d7d7d;
+                            color:#fff;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .favorite_feed_content {
+        text-align: center;
+        padding:30px;
+        width:100%;
+        height:500px;
+        margin:30px auto 0px auto;
+        background-color: rgba(0,0,0,0.4);
+        border-radius:3px;
+        box-shadow: -3px 3px 5px rgba(221, 0, 0, 0.7), 3px -3px 5px rgba(255, 207, 0, 0.7);
+    }    
+}
+@media screen and (max-width: 768px) {
+	/* 768px以下に適用されるCSS（スマホ用） */
+    .mypage {
+        .profile {
+            .name {
+                margin: 30px;
+                .favorite_teams {
+                    text-align: center;
+                    .select-favorite {
+                        .vm--modal {
+                            overflow-y: auto !important;
+                            height: 80% !important;
+                        }
+                        .modal-body {
+                            text-align: center;
+                            form {
+                                margin: 0px;
+                                .team_wrap {
+                                    display: block;
+                                    padding: 10px;
+                                    text-align: left;
+                                    .team_list {
+                                        display: block;
+                                        width: 100%;
+                                    }
+                                }
+                            }
+                            label {
+                                margin-top: 5px;
+                                margin-left: 10px;
+                                margin-bottom: 0px;
+                            }
+                            .button {
+                                margin: 0px;
+                            }
+                            .close_button {
+                                width:100%;
+                                padding:10px;
+                                border:0px;
+                                background:#7d7d7d;
+                                color:#fff;
+                                font-weight: 500;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,368 @@
+diff --git a/app/Http/Controllers/TestapiController.php b/app/Http/Controllers/TestapiController.php
+index d1921f0..8113b56 100644
+--- a/app/Http/Controllers/TestapiController.php
++++ b/app/Http/Controllers/TestapiController.php
+@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
+ 
+ class TestapiController extends Controller
+ {
+-    
++
+     private $api_token = '';
+     public function __construct()
+     {
+@@ -19,10 +19,11 @@ class TestapiController extends Controller
+         $header = array('headers' => array('X-Auth-Token' => $this->api_token));
+         $cache_key = 'api.football-data.org/v2/competitions/BL1/matches';
+         $matches = '';
++
+         $client = new Client();
+         if (Cache::has($cache_key)) {
+             $matches = Cache::get($cache_key);
+-            
++
+             \Log::debug(__LINE__.' '.__METHOD__.' キャッシュあり ');
+             \log::debug(print_r($matches,true));
+         } else {
+@@ -41,7 +42,7 @@ class TestapiController extends Controller
+         //echo '<pre>' .print_r($matches_decoded,true).'</pre>';
+         return view('testapi.index', ['matches' => $matches_decoded]);
+     }
+-    
++
+     public function api()
+     {
+         $uri = 'http://api.football-data.org/v2/competitions/BL1/matches';
+@@ -49,9 +50,9 @@ class TestapiController extends Controller
+         $cache_key = 'api.football-data.org/v2/competitions/BL1/matches';
+         $matches = [];
+         $client = new Client();
+-        if (Cache::has($cache_key)) {
++        if (1 == 0 && Cache::has($cache_key)) {
+             $matches = Cache::get($cache_key);
+-            
++
+             \Log::debug(__LINE__.' '.__METHOD__.' キャッシュあり ');
+             \log::debug(print_r($matches,true));
+         } else {
+@@ -60,16 +61,22 @@ class TestapiController extends Controller
+             $body_decoded = json_decode($body,false);
+             $matches = $body_decoded->matches;
+             //$matches = json_decode($matches, true);
+-            Cache::put($cache_key, json_encode($matches), 3600);
+-            \Log::debug(__LINE__.' '.__METHOD__.' キャッシュなし ');
+-            \log::debug(print_r($matches,true));
+-            $matches = json_encode($matches);
++
++//            Cache::put($cache_key, json_encode($matches), 3600);
++
++            \Log::debug(__LINE__ . '  '. __METHOD__
++
++            );
++
++//            \Log::debug(__LINE__.' '.__METHOD__.' キャッシュなし ');
++//            \log::debug(print_r($matches,true));
++//            $matches = json_encode($matches);
+         }
+         //dd($matches);
+-        $matches_decoded = json_decode($matches, true);
++//        $matches_decoded = json_decode($matches, true);
+         //echo '<pre>' .print_r($matches_decoded,true).'</pre>';
+         return response()->json($matches);
+-        
++
+         //view('testapi.index', ['matches' => $matches_decoded]);
+     }
+ }
+diff --git a/resources/js/components/FeedListComponent.vue b/resources/js/components/FeedListComponent.vue
+index 9ad4ae2..4c1e7f1 100644
+--- a/resources/js/components/FeedListComponent.vue
++++ b/resources/js/components/FeedListComponent.vue
+@@ -4,7 +4,7 @@
+             <h2 style="text-align:center;font-size:1.4em;padding-bottom:20px;">新着情報</h2>
+             <!-- <Loading v-show="loading"></Loading> -->
+             <!-- {{ matches }} -->
+-            
++
+             <!-- <div>
+                 {{ this.$store.state.current_page }}<br>
+                 {{ this.$store.state.last_page }}<br>
+@@ -27,13 +27,13 @@
+                     </div>
+                 </div>
+             </div>
+-            <modal 
+-                name="feed" 
++            <modal
++                name="feed"
+                 v-on:click="ModalShow"
+                 :draggable="true"
+                 height="80%">
+                 <div class="modal-header" v-if="this.$store.state.selectFeedId !== null">
+-                    
++
+                     <h3>{{ feeds[this.$store.state.selectFeedId].title }}</h3>
+                     <p>{{ feeds[this.$store.state.selectFeedId].date }}</p>
+                     <p>{{ feeds[this.$store.state.selectFeedId].team }}</p>
+@@ -62,7 +62,7 @@
+                             <div>
+                                 <textarea
+                                     v-model="commentForm"
+-                                    ></textarea>  
++                                    ></textarea>
+                             </div>
+                             <div>
+                                 <button v-on:click="SendPostComment">
+@@ -80,7 +80,7 @@
+             </modal>
+             <div style="text-align: center;margin-top: 30px;">
+             <ul class="pagination" style="justify-content: center;">
+-                <li class="inactive" 
++                <li class="inactive"
+                     :class="(this.$store.state.current_page == 1) ? 'disabled' : ''"
+                     @click="changePage(currentPage-1)"
+                 >&laquo;</li>
+@@ -122,15 +122,15 @@ export default {
+     // メソッド一覧
+     methods: {
+         button4 () {
+-            
++
+             this.$store.commit('getFeeds')
+-            
++
+         },
+         async getFeeds (store, page) {
+             // this.loadingOn()
+             let token = document.head.querySelector('meta[name=api-token]')
+             const url = '/api/feed?page=' + page + '&api_token=' + token.content
+-                        
++
+             await axios.get(url)
+                 .then(function (response) {
+                     store.commit('setFeeds', response.data.data)
+@@ -147,7 +147,7 @@ export default {
+             this.$modal.show('feed')
+         },
+         ModalHide () {
+-            this.$modal.hide('feed')            
++            this.$modal.hide('feed')
+         },
+         calRange(start, end) {
+             const range = [];
+@@ -162,11 +162,11 @@ export default {
+             console.log(typeof page)
+             if (page > 0 && page <= this.$store.state.last_page) {
+                 this.$store.state.current_page = page
+-                
++
+                 await this.getFeeds(this.$store, page)
+-                
++
+             }
+-            
++
+         },
+         isCurrent(page) {
+             return page === this.$store.state.current_page
+@@ -195,19 +195,19 @@ export default {
+             //userのnews_idを取得
+             var news_id = this.$refs.news_id
+             console.log(news_id.innerHTML)
+-            
++
+             let params = {
+                 feed_id: this.$store.state.selectFeedId,
+                 comment: this.$store.state.postComment,
+                 user_id: user_id.content,
+                 news_id: news_id.innerHTML
+             }
+-            
++
+             // Ajaxでデータを投げる
+             await axios.put(url, params)
+                 .then(function (response) {
+                     // this.ModalHide()
+-                    console.log(response)                    
++                    console.log(response)
+                 })
+                 .catch(function (error) {
+                     console.log(error)
+@@ -217,7 +217,7 @@ export default {
+             this.ModalHide()
+             this.isSendingReset()
+         },
+-        
++
+     },
+     // 読み込み直後に起動するもの
+     async mounted () {
+@@ -225,10 +225,9 @@ export default {
+         // this.loadingOn()
+         await this.button4()
+         this.$store.dispatch('getMatches')
+-                
+     },
+     updated() {
+-        console.log('=====');
++        console.log('feed list component updated()');
+         this.loading = false;
+     },
+     async created () {
+@@ -293,7 +292,7 @@ export default {
+                 this.$store.state.front_dot = false
+                 this.$store.state.end_dot = true
+                 this.$store.commit('setFrontDot', false)
+-                this.$store.commit('setEndDot', true)                
++                this.$store.commit('setEndDot', true)
+             } else if (this.$store.state.current_page > this.$store.state.last_page - this.$store.state.range) {
+                 start = this.$store.state.last_page - this.$store.state.range - 1
+                 end = this.$store.state.last_page - 2
+@@ -311,9 +310,9 @@ export default {
+             if (!this.sizeCheck) return []
+                 return this.calRange(this.$store.state.last_page - 1, this.$store.state.last_page)
+         },
+-        
++
+     },
+-   
++
+     components: {
+         CommentList,
+         VueLoading,
+diff --git a/resources/js/components/MatchesComponent.vue b/resources/js/components/MatchesComponent.vue
+index 19752b2..edad023 100644
+--- a/resources/js/components/MatchesComponent.vue
++++ b/resources/js/components/MatchesComponent.vue
+@@ -3,14 +3,15 @@
+         <div class="row justify-content-center">
+             <div class="col-md-8">
+                 <!-- {{ matches }} -->
+-                
++
+             <div v-for="match in matches">
+-                {{ match }}
+-                
++                <small>{{ match }}</small>
++                <hr>
++
+             </div>
+-        
+-        
+-        
++
++
++
+             </div>
+         </div>
+     </div>
+@@ -25,11 +26,11 @@ import vueMoment from 'vue-moment'
+ Vue.use(Vuex)
+ Vue.use(VModal)
+ Vue.use(vueMoment)
+-    
++
+ export default {
+     mounted() {
+-        console.log('mounted')
+-        this.$store.dispatch('getMatches')
++        console.log('Component mounted')
++        // this.$store.dispatch('getMatches')
+     },
+     computed: {
+         matches: function(){
+diff --git a/resources/js/feed.js b/resources/js/feed.js
+index 8423b91..b1959d3 100644
+--- a/resources/js/feed.js
++++ b/resources/js/feed.js
+@@ -17,7 +17,7 @@ const store = new Vuex.Store({
+         selectFeedId: null,
+         postComment: 'ポストコメント',
+         comments: [],
+-        tcomments: [],  
++        tcomments: [],
+         isSending: false,
+         current_page:1,
+         last_page: "",
+@@ -31,7 +31,7 @@ const store = new Vuex.Store({
+         getFeeds (state) {
+             let token = document.head.querySelector('meta[name=api-token]')
+             const url = '/api/feed?page=1' + '&api_token=' + token.content
+-            
++
+             axios.get(url)
+                 .then(function (response) {
+                     store.commit('setFeeds', response.data.data)
+@@ -89,6 +89,8 @@ const store = new Vuex.Store({
+     },
+     actions: {
+         getMatches (state){
++
++            console.log('feed.js actions getMatches() ')
+             axios.get('api/matches')
+             .then(function (response) {
+                 console.log(response.data)
+@@ -105,27 +107,44 @@ const app = new Vue({
+     el: '#app',
+     components: { FeedList,Slick } ,
+     store,
+-    
++
+     data() {
+         return {
+-          date: this.$moment().format(),
++            date: this.$moment().format(),
++            // 初期設定がおかしかった
++            slickOptions: {
++                slidesToShow: 1,
++                arrows: true,
++                centerMode: true,
++                initialSlide: 1,
++                centerSlide: 1,
++                centerPadding: '10%',
++                asNavFor: '.slider-nav',
++            },
++            slickNavOptions: {
++                slidesToShow: 5,
++                asNavFor: '.slider-for',
++                focusOnSelect: true,
++            },
++            // ここでmatchesの初期化
++            matches: [],
+         };
+-      },
+-      data: {
+-        //メイン
+-        slickOptions: {
+-            slidesToShow: 1,
+-            arrows: true,
+-            centerMode: true,
+-            initialSlide: 1,
+-            centerPadding: '10%',
+-            asNavFor: '.slider-nav',
+-        },
+-        //サムネイル
+-        slickNavOptions: {
+-            slidesToShow: 5,
+-            asNavFor: '.slider-for',
+-            focusOnSelect: true,
+-        },
+     },
++    // data: {
++    //     //メイン
++    //     slickOptions: {
++    //         slidesToShow: 1,
++    //         arrows: true,
++    //         centerMode: true,
++    //         initialSlide: 1,
++    //         centerPadding: '10%',
++    //         asNavFor: '.slider-nav',
++    //     },
++    //     //サムネイル
++    //     slickNavOptions: {
++    //         slidesToShow: 5,
++    //         asNavFor: '.slider-for',
++    //         focusOnSelect: true,
++    //     },
++    // },
+ })
