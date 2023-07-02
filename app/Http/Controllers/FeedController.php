@@ -55,7 +55,7 @@ class FeedController extends Controller
             //画像URL抽出
             $target_text = $content;  //対象の文字列
             $delimiter_start = 'src="';  //区切り文字（開始）
-            $delimiter_end = '" alt=""';  //区切り文字（終了）
+            $delimiter_end = '" width=';  //区切り文字（終了）
             $start_position = strpos($target_text, $delimiter_start) + strlen($delimiter_start);  //開始位置
             $length = strpos($target_text, $delimiter_end) - $start_position;  //切り出す部分の長さ
             $img_path = mb_substr($target_text, $start_position, $length, "utf-8" );  //切り出し　＊＊＊
