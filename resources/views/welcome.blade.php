@@ -96,7 +96,6 @@
             </div>
         </div>
         <div id="app">
-        <User></User>
         </div>
     </body>
 </html>

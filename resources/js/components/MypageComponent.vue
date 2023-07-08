@@ -69,7 +69,7 @@
                                             </div>
                                             <p ref="user_id" style="display:none;">{{ user.id }}</p>
                                             <button class="button">登録</button>
-                                            <p>{{ editTeams }}</p>
+                                            <!-- <p>{{ editTeams }}</p> -->
                                         </form>
                                         <button v-on:click="hideEditFavorite" class="close_button">close</button>
                                     </div>
@@ -106,7 +106,7 @@
                                             </div>
                                             <p ref="user_id" style="display:none;">{{ user.id }}</p>
                                             <button class="button">登録</button>
-                                            <p>{{ selectedTeams }}</p>
+                                            <!-- <p>{{ selectedTeams }}</p> -->
                                         </form>
                                         <button v-on:click="hideFavorite" class="close_button">close</button>
                                     </div>

@@ -9,7 +9,6 @@ Vue.use(Vuex)
 Vue.use(VueLoading)
 Vue.component('matches-component', require('./components/MatchesComponent.vue').default);
 Vue.component('mypage-component', require('./components/MypageComponent.vue').default);
-Vue.component('sns-component', require('./components/SnsComponent.vue').default);
 Vue.component('loading-component', require('./components/LoadingComponent.vue').default);
 import FeedList from './components/FeedListComponent'
 const store = new Vuex.Store({
