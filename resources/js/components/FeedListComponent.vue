@@ -44,7 +44,7 @@
                             <table>
                                 <tr v-for="comment in feeds[this.$store.state.selectFeedId].comments">
                                     <td class="date">{{ comment.created_at | moment("YYYY/MM/DD") }}　</td>
-                                    <td class="name"><img :src="'/storage/images/' + comment.user.profile_image" width="10px">{{ comment.user.name }}　</td>
+                                    <td class="name"><img :src="'/laravel/storage/images/' + comment.user.profile_image" width="10px">{{ comment.user.name }}　</td>
                                     <td class="comment">{{ comment.comment }}</td>
                                 </tr>
                             </table>
