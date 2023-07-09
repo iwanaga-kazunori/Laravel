@@ -5,7 +5,7 @@
                 <h2>Meine Seite</h2>
                 <div class="profile row justify-content-center">
                     <div class="icon col-md-5">
-                        <p v-if="showUserImage" class="icon_image"><img v-bind:src="'/storage/images/' + user.profile_image"></p>
+                        <p v-if="showUserImage" class="icon_image"><img v-bind:src="'/laravel/storage/images/' + user.profile_image"></p>
                         <button v-on:click="showImage" class="button">編集</button>
                         <modal
                             name="profile_image"
