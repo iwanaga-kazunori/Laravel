@@ -202,7 +202,7 @@ export default {
             
                 formData.append('file',this.fileInfo)
                 formData.append("id",user_id)
-                axios.post('/api/fileupload', formData )
+                axios.post('/laravel/api/fileupload', formData )
                     .then(response =>{
                         this.userImage = response.data
                         if(response.data.profile_image) {
@@ -233,7 +233,7 @@ export default {
                 id:user_id
             }
             if (this.selectedTeams != "") {
-                axios.post("/api/favoriteTeamsCreate", params).then((res) => {
+                axios.post("/laravel/api/favoriteTeamsCreate", params).then((res) => {
                     this.selectedTeams = "";
                     this.favoriteTeamsRead();
                     this.hideFavorite();
