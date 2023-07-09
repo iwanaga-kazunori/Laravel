@@ -86,7 +86,7 @@ const store = new Vuex.Store({
         },
         getFeeds (state) {
             let token = document.head.querySelector('meta[name=api-token]')
-            const url = '/api/feed?page=1' + '&api_token=' + token.content
+            const url = '/laravel/api/feed?page=1' + '&api_token=' + token.content
             axios.get(url)
                 .then(function (response) {
                     store.commit('setFeeds', response.data.data)
