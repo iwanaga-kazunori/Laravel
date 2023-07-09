@@ -3,7 +3,7 @@ body {
   background-position: center;
   background-color: #000;*/
   color: #fff;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url(/storage/images/background.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url(/laravel/storage/images/background.jpg);
   background-size: cover;
   background-position: top;
   background-attachment: fixed;
