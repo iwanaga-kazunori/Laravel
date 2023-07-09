@@ -167,7 +167,7 @@ export default {
             }
             setTimeout(() => {
                 this.isLoadingOff();}
-                ,4000
+                ,2000
             )
         },
         isCurrent(page) {
