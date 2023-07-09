@@ -193,7 +193,7 @@ export default {
             if (this.$store.state.postComment) {
                 // console.log('コメントあり')
                 this.isSendingChange()
-                let url = '/api/feed'
+                let url = '/laravel/api/feed'
                 //userのidを取得
                 let user_id = document.head.querySelector('meta[name=user_id]')
                 //userのnews_idを取得
