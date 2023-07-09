@@ -125,7 +125,7 @@ const store = new Vuex.Store({
             })
         },
         getTeams (state){
-            axios.get('api/teams')
+            axios.get('/laravel/api/teams')
             .then(function (response) {
                 store.commit('setTeams',response.data)
             })
