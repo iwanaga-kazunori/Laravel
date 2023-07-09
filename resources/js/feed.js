@@ -135,7 +135,7 @@ const store = new Vuex.Store({
         },
         getFavoriteTeams(state) {
             let id = document.head.querySelector('meta[name=user_id]')
-            const url = 'laravel/api/favoriteTeamsRead?id=' + id.content
+            const url = '/api/favoriteTeamsRead?id=' + id.content
             // console.log(url)
             axios.get(url)
             .then(function (response) {
