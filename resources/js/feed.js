@@ -116,7 +116,7 @@ const store = new Vuex.Store({
         },
         // 試合結果・日程取得
         getMatches (state){
-            axios.get('api/matches')
+            axios.get('/laravel/api/matches')
             .then(function (response) {
                 store.commit('setMatches',response.data)
             })
