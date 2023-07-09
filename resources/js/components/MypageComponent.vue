@@ -233,7 +233,7 @@ export default {
                 id:user_id
             }
             if (this.selectedTeams != "") {
-                axios.post("/api/favoriteTeamsCreate", params).then((res) => {
+                axios.post("/laravel/api/favoriteTeamsCreate", params).then((res) => {
                     this.selectedTeams = "";
                     this.favoriteTeamsRead();
                     this.hideFavorite();
